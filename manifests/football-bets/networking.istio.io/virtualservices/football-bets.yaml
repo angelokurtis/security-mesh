@@ -9,7 +9,10 @@ spec:
   hosts:
     - football.com
   http:
-    - route:
+    - match:
+        - uri:
+            prefix: /bets
+      route:
         - destination:
             host: bets.football-bets.svc.cluster.local
             port:
