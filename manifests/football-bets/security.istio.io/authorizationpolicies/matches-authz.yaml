@@ -1,0 +1,16 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: matches-authz
+  namespace: football-bets
+spec:
+  action: ALLOW
+  rules:
+    - when:
+        - key: request.auth.claims[scope]
+          values:
+            - matches:read
+            - matches:write
+  selector:
+    matchLabels:
+      app: matches
