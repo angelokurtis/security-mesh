@@ -8,6 +8,4 @@ spec:
     - issuer: http://35.238.122.239:8080/auth/realms/tdc-sp
       # openid pattern to discovery endpoints https://openid.net/specs/openid-connect-discovery-1_0.html
       jwksUri: http://35.238.122.239:8080/auth/realms/tdc-sp/protocol/openid-connect/certs
-  selector:
-    matchLabels:
-      app: bets
+      forwardOriginalToken: true
