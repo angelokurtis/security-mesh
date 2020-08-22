@@ -5,8 +5,9 @@ metadata:
   namespace: football-bets
 spec:
   jwtRules:
-    - issuer: testing@secure.istio.io
-      jwksUri: https://raw.githubusercontent.com/istio/istio/release-1.6/security/tools/jwt/samples/jwks.json
+    - issuer: http://35.238.122.239:8080/auth/realms/tdc-sp
+      # openid pattern to discovery endpoints https://openid.net/specs/openid-connect-discovery-1_0.html
+      jwksUri: http://35.238.122.239:8080/auth/realms/tdc-sp/protocol/openid-connect/certs
   selector:
     matchLabels:
       app: bets
