@@ -1,7 +1,7 @@
 apiVersion: security.istio.io/v1beta1
 kind: RequestAuthentication
 metadata:
-  name: jwt-example
+  name: validate-jwt
   namespace: football-bets
 spec:
   jwtRules:

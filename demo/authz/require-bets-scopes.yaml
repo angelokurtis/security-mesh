@@ -1,0 +1,16 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: require-bets-scopes
+  namespace: football-bets
+spec:
+  action: ALLOW
+  rules:
+    - when:
+        # supported keys: https://istio.io/latest/docs/reference/config/security/conditions/
+        - key: request.auth.claims[scope]
+          values:
+            - bets:write
+  selector:
+    matchLabels:
+      app: bets
