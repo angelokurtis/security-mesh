@@ -1,0 +1,11 @@
+apiVersion: security.istio.io/v1beta1
+kind: RequestAuthentication
+metadata:
+  name: validate-jwt
+  namespace: football-bets
+spec:
+  jwtRules:
+    - issuer: http://35.192.70.43:8080/auth/realms/tdc-sp
+      # openid pattern to discovery endpoints https://openid.net/specs/openid-connect-discovery-1_0.html
+      jwksUri: http://35.192.70.43:8080/auth/realms/tdc-sp/protocol/openid-connect/certs
+      forwardOriginalToken: true
