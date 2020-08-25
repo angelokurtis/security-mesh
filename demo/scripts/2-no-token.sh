@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-watch -x http -h POST 34.67.1.190/bets 'Host: football.com'
+watch -x http -h POST 34.67.1.190/bets

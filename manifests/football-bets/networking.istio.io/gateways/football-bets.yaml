@@ -1,4 +1,4 @@
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
   name: football-bets
@@ -7,9 +7,9 @@ spec:
   selector:
     istio: ingressgateway
   servers:
-    - hosts:
-        - football.com
-      port:
-        name: http
-        number: 80
-        protocol: HTTP
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "*"

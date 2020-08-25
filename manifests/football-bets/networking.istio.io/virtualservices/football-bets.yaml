@@ -1,19 +1,16 @@
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: football-bets
   namespace: football-bets
 spec:
-  gateways:
-    - football-bets
   hosts:
-    - football.com
+  - "*"
+  gateways:
+  - football-bets
   http:
-    - match:
-        - uri:
-            prefix: /bets
-      route:
-        - destination:
-            host: bets.football-bets.svc.cluster.local
-            port:
-              number: 9090
+  - route:
+    - destination:
+        port:
+          number: 9090
+        host: bets.football-bets.svc.cluster.local
