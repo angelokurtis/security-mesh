@@ -52,7 +52,7 @@ echo "Creating client role"
 curl -i -X POST "http://$KEYCLOAK_URL/auth/admin/realms/tdc-sp/clients/$CLIENT_ID/roles" \
 -H "Authorization: Bearer $ADMIN_TOKEN" \
 -H "Content-Type: application/json" \
--d '{"name": "make_bet"}'
+-d '{"name": "bet:write"}'
 
 ROLE_ID=$(curl -s "http://$KEYCLOAK_URL/auth/admin/realms/tdc-sp/clients/$CLIENT_ID/roles" \
 -H "Authorization: Bearer $ADMIN_TOKEN" | jq -r '.[0].id')
@@ -76,7 +76,7 @@ echo "Setting client role to user"
 curl -i -X POST "http://$KEYCLOAK_URL/auth/admin/realms/tdc-sp/users/$USER_ID/role-mappings/clients/$CLIENT_ID" \
 -H "Authorization: Bearer $ADMIN_TOKEN" \
 -H "Content-Type: application/json" \
--d '[{"id":"'"$ROLE_ID"'","name":"make_bet"}]'
+-d '[{"id":"'"$ROLE_ID"'","name":"bet:write"}]'
 
 echo "---------"
 echo "Getting user access token"
